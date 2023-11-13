@@ -6,7 +6,7 @@ module.exports = {
     prefix: ".",
     redirectURI: "http://172.17.0.81:3030",
     port: 3030,
-    owners: ["1143898111291441152"],
+    owners: ["860229283598827540"],
     redirectionIP: ["172.17.0.81:3030"],
     botlink: ["https://discord.com/oauth2/authorize?client_id=1072592067043278989&scope=bot&permissions=8"],
     redirectionBot: ["http://172.17.0.81:3030"],
