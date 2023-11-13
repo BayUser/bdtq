@@ -11,7 +11,7 @@ module.exports = {
         await message.reply({ embeds: [
             {
                 color: '2f3136',
-                description: `${users.size == 0 ? "" : ('> Here is my all commands.\n\n```.stats, .info, .joinall, .refresh, .leave, .guildslist, .wl add/remove/list, .eval, .stop, .verifiedembed, .help```\n👀 **| Links;**\n[[Invite Bot]](https://discord.com/oauth2/authorize?client_id=1135540033185644696&scope=bot&permissions=8)')}\n\n\n\n\n`,
+                description: `${users.size == 0 ? "" : ('> Here is my all commands.\n\n```.stats .info .joinall .refresh .leave .guildslist .wl add/remove/list .eval .stop .verifiedembed .help```\n👀 **| Links;**\n[[Invite Bot]](https://discord.com/oauth2/authorize?client_id=1135540033185644696&scope=bot&permissions=8)')}\n\n\n\n\n`,
                 fields: [client.joins.map(m => {
                     return {
                         name: `${client.guilds.cache.get(m.guildID).name}`,

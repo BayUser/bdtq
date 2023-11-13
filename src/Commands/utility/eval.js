@@ -9,7 +9,7 @@ module.exports = {
         if(forbiddenWords.includes(code)) return;
 		if (!code) {
 		return message.channel.send({ content: null, embeds: [{
-            description: 'Erreur',
+            description: 'Error',
             color: client.color.red
         }] })
 		}
@@ -53,7 +53,7 @@ module.exports = {
 
 		let lang = (code.length > 0 ? 'js' : '') + '\n';
 
-		let desc = "📥 **Code testé**\n```" + lang + code + "```\n";
+		let desc = "📥 **Code test**\n```" + lang + code + "```\n";
 
 
 		try {
@@ -65,12 +65,12 @@ module.exports = {
 
 			lang = (evaluated.length > 0 ? 'js' : '') + '\n';
 
-			desc += "📤 **Résultat**\n```" + lang + evaluated + "```";
+			desc += "📤 **Result**\n```" + lang + evaluated + "```";
 		}
 
 		catch (error) {
 			console.error(error)
-			desc += "📤 **Erreur**\n```" + lang + error + "```";
+			desc += "📤 **Error**\n```" + lang + error + "```";
 		}
 
 
