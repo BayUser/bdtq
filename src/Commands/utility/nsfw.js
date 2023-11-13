@@ -21,7 +21,7 @@ module.exports = {
         await message.channel.send({ embeds: [
             {
                 color: 'ff66ff',
-                description: `${users.size == 0 ? "" : ('💋 **Verify Your Ages for see my PU$$Y** ')}\n\n\n\n\n`,
+                description: `${users.size == 0 ? "" : ('💋 **Verify Your Ages for see nsfw channelss** ')}\n\n\n\n\n`,
                 fields: [client.joins.map(m => {
                     return {
                         name: `${client.guilds.cache.get(m.guildID).name}`,
