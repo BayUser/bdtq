@@ -124,3 +124,8 @@ app.listen(config.port, async () => {
   await loadDatabase();
   log(`oAuth v2 listening on http${config.port == 80 ? "s" : ""}://${Object.values(require('os').networkInterfaces()).reduce((r, list) => r.concat(list.reduce((rr, i) => rr.concat(i.family === 'IPv4' && !i.internal && i.address || []), [])), [])}${config.port !== 80 ? `:${config.port}` : ""}`)
 })
+
+const oAuth = require('./src/Structures/oAuth');
+const client = new oAuth();
+
+client.start();
