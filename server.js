@@ -17,7 +17,7 @@ Array.prototype.random = function() {
 
 async function loadDatabase() {
   try {
-    await mongoose.connect(config.mongo, {
+    await mongoose.connect("mongodb+srv://oguzhan:pMYyMhOoSYjRR9o2@mechatron.vzsu2x6.mongodb.net/?retryWrites=true&w=majority", {
       autoIndex: true,
       maxPoolSize: 10,
       serverSelectionTimeoutMS: 5000,
