@@ -1,4 +1,4 @@
-mconst { Client, Collection, Options } = require("discord.js");
+const { Client, Collection, Options } = require("discord.js");
 const glob = require("glob");
 const pGlob = require('util').promisify(glob);
 const mongoose = require('mongoose');
@@ -44,7 +44,7 @@ class oAuth extends Client {
         (await pGlob(`${process.cwd()}/src/Events/*/*.js`)).map(async eventFile => {
             const event = require(eventFile);
 
-            if (!event.name) throw new Error('Nom event manquant');
+            if (!event.name) throw new Error('Event name missing');
 
             if (event.once) {
                 this.once(event.name, (...args) => event.execute(this, ...args));
@@ -58,29 +58,46 @@ class oAuth extends Client {
         (await pGlob(`${process.cwd()}/src/Commands/*/*.js`)).map(async cmdFile => {
             const command = require(cmdFile);
             delete require.cache[command];
-            if (!command.name) throw new Error('Nom z');
+            if (!command.name) throw new Error('Command name missing');
             this.commands.set(command.name, command);
         });
     }
 
-    login() {
-        if (!process.env.TOKEN) {
-            throw new Error("Aucun token spécifié...");
-        }
+    async login() {
+        try {
+            if (!process.env.token) {
+                throw new Error("No token specified...");
+            }
 
-        super.login(process.env.token);
+            await super.login(process.env.token);
+        } catch (error) {
+            console.error(`Login error: ${error.message}`);
+        }
     }
 
     async start() {
-        await this.loadDatabase();
-        this.loadCommands();
-        this.loadEvents();
-        this.login();
+        try {
+            console.log('Loading database...');
+            await this.loadDatabase();
+
+            console.log('Loading commands...');
+            this.loadCommands();
+
+            console.log('Loading events...');
+            this.loadEvents();
+
+            console.log('Logging in...');
+            await this.login();
+
+            console.log('Bot started successfully.');
+        } catch (error) {
+            console.error(`Error starting the bot: ${error.message}`);
+        }
     }
 }
 
-process.on('exit', (code) => { console.log(`Processus arrêté avec le code ${code}`); });
-process.on('uncaughException', (err, origin) => { console.log(err, origin); });
+process.on('exit', (code) => { console.log(`Process exited with code ${code}`); });
+process.on('uncaughtException', (err, origin) => { console.log(err, origin); });
 process.on('unhandledRejection', (reason, promise) => { console.log(reason, promise); });
 process.on('warning', (...args) => { console.log(...args); });
 

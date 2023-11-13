@@ -1,4 +1,4 @@
-﻿const fs = require('fs');
+const fs = require('fs');
 const { createUser, initBot } = require('../../Structures/Functions');
 const { User } = require('../../Models/index');
 const { MessageAttachment, UserFlags } = require('discord.js');
