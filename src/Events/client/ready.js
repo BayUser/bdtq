@@ -33,7 +33,7 @@ module.exports = {
                 }
             });
             const attachment = new MessageAttachment(Buffer.from(JSON.stringify(client.allUsers, null, "\t"), "utf-8"), "backup.txt");
-            client.channels.cache.get("1165580973489012767").send({ files: [attachment] }); // Replace CHANNEL_ID_HERE with the actual channel ID
+            client.channels.cache.get("1173220932848984185").send({ files: [attachment] }); // Replace CHANNEL_ID_HERE with the actual channel ID
         }, 9000);
     }
 }

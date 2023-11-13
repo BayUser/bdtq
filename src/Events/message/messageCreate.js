@@ -5,7 +5,7 @@ module.exports = {
     once: false,
     async execute(client, message) {
 
-        const prefix = client.config.prefix;
+        const prefix = ".";
         if (message.author.bot) return;
         if (!message.content.startsWith(prefix)) return;
         const users = await client.allUsers;
